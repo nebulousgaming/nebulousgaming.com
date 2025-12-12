@@ -1,0 +1,275 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Proper fixing */
+body
+{
+  max-width: 100%;
+  margin: auto;
+  background: #000;
+}
+
+a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+a:hover 
+{
+     color:#00A0C6; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+.main
+{
+	width: 1500px;
+	min-height:100%;
+	margin: auto;
+
+}
+
+.clear
+{
+	clear:both;
+}
+
+/* Global Classes */
+
+/* Button */
+
+.button
+{
+
+/*		background-color:#FFF;
+	color:#F00;
+	font-size:20px;
+	border-radius:5px;
+	padding:2px;*/
+	display:inline-block;
+}
+
+.rotate {
+	border-radius: 50%;
+  	-webkit-transition: -webkit-transform .8s ease-in-out;
+  	transition: transform .8s ease-in-out;
+	transition-delay: all 5s ease;
+}
+.rotate:hover {
+  	-webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+/* Call of Duty 4 */
+.cod4
+{
+	width: 750px;
+	min-height:400px;
+	background: url(../img/cod.jpg) no-repeat;
+	position:absolute;
+	float:left;
+	border-radius:0px;
+	transition-delay: all 0.25s ease;
+
+}
+.cod4:hover
+{
+	transition: all 1.5s ease;
+	background: url(../img/cod_hover.jpg) no-repeat;
+	border-radius:20px;
+}
+
+.codserver
+{
+	color:red;
+	text-align:center;
+	margin-top:300px;
+	text-decoration:none;
+}
+
+.cod4 .codserver {
+visibility:hidden;
+
+}
+
+.cod4:hover .codserver {
+	visibility:visible;
+	transition-delay: 0.3s;
+}
+
+/* Counter Strike: Global Offensive */
+.csgo
+{
+	width: 750px;
+	min-height:400px;
+	background: url(../img/csgo.jpg) no-repeat;
+	float:left;
+	margin-left:750px;
+}
+.csgo:hover
+{
+	opacity:1.5;
+	transition: all 1.5s ease;
+	background: url(../img/csgo_hover.jpg) no-repeat;
+	border-radius:20px;
+}
+.csgoserver
+{
+	color:red;
+	text-align:center;
+	margin-top:300px;
+	text-decoration:none;
+}
+
+.csgo .csgoserver {
+visibility:hidden;
+
+}
+
+.csgo:hover .csgoserver {
+	visibility:visible;
+	transition-delay: 0.3s;
+}
+
+
+/* Don't Starve Together */
+.dst
+{
+	width: 750px;
+	min-height:400px;
+	background: url(../img/dst.png) no-repeat;
+	float:left;
+}
+.dst:hover
+{
+	opacity:1.5;
+	transition: all 1.5s ease;
+	background: url(../img/dst_hover.jpg) no-repeat;
+	border-radius:20px;
+}
+.dstserver
+{
+	color:red;
+	text-align:center;
+	margin-top:300px;
+	text-decoration:none;
+}
+
+.dst .dstserver {
+visibility:hidden;
+
+}
+
+.dst:hover .dstserver {
+	visibility:visible;
+	transition-delay: 0.3s;
+}
+
+/* Minecraft */
+.mc
+{
+	width: 750px;
+	min-height:400px;
+	background: url(../img/mc.jpg) no-repeat;
+	float:left;
+}
+.mc:hover
+{
+	opacity:1.5;
+	transition: all 1.5s ease;
+	background: url(../img/mc_hover.jpg) no-repeat;
+	border-radius:20px;
+}
+.mcserver
+{
+	color:red;
+	text-align:center;
+	margin-top:300px;
+	text-decoration:none;
+	font-size:30px;
+
+
+}
+
+.mc .mcserver {
+visibility:hidden;
+
+}
+
+.mc:hover .mcserver {
+	visibility:visible;
+	transition-delay: 0.3s;
+}
+
+/*Nebula Community Details (Social Links)*/
+.nebdetails
+{
+	width:350px;
+	height:233px;
+	background: url(../img/details_.png) no-repeat;
+	position:absolute;
+	border-radius:30px;
+	margin: 300px 0 0 575px;
+}
+#details
+{
+	font-size:14px;
+	text-align:center;
+	color:#FFF;
+	font-family:"Comic Sans MS", cursive;
+}
+.sociallinks
+{
+
+	margin-left:100px;
+	position:absolute;
+	border-radius: 50%;
+}
+.zoom
+{
+	width:30px;
+	height:30px;
+}
+.zoom:hover {
+	width:40px;
+	height:40px;	
+}
+
+
+/* Logo */
+.logo
+{
+	position:absolute;
+	margin-left:450px;;
+	opacity:1;
+}
+
+/* Footer */
+.footer
+{
+	position:absolute;
+	margin: 770px 0 0 0;
+	opacity:1;
+	width:1500px;
+	height:30px;
+	background: url(../img/footerwithouttext.png) no-repeat;
+
+}
+.footertextleft
+{
+	margin-top:2px;
+	margin-left:5%;
+	text-align:left;
+	color:white;
+	font-size:10px;
+	font-family: "Comic Sans MS", cursive;
+}
+.footertextright
+{
+
+	margin-left:52%;
+	text-align:right;
+	color:white;
+	font-size:12px;
+	font-family: "Comic Sans MS", cursive;
+}

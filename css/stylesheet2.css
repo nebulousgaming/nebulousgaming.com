@@ -1,0 +1,101 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* Proper fixing */
+body
+{
+  max-width: 100%;
+  margin: auto;
+  background:#FFF;
+}
+
+a {
+    color: #FF0;
+    text-decoration: none;
+	font-size:20px;
+}
+
+a:hover 
+{
+     color:#00A0C6; 
+     text-decoration:none; 
+     cursor:pointer;  
+}
+
+.main
+{
+	width: 1500px;
+	background:#000;
+	margin:auto;
+	text-align:center;
+	min-height:800px;
+}
+
+.clear
+{
+	clear:both;
+}
+
+/* Global Classes */
+
+/* Button */
+
+
+/* Logo */
+.logo
+{
+
+	margin:auto;
+	text-align:center;
+
+}
+
+.rules
+{
+	width:800px;
+	min-height:100px
+	text-aling:center;
+	margin:auto;
+}
+#rulestxt
+{
+	text-align:justify;
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-size:18px;
+	color: #0FF;
+}
+.codserver
+{
+	min-height:100px;
+	text-aling:center;
+	margin:auto;
+}
+
+/* Footer */
+.footer
+{
+	margin-top:62px;
+	opacity:1;
+	width:1500px;
+	height:30px;
+	background: url(../img/footerwithouttext.png) no-repeat;
+
+}
+.footertextleft
+{
+	margin-top:2px;
+	margin-left:5%;
+	text-align:left;
+	color:white;
+	font-size:10px;
+	font-family: "Comic Sans MS", cursive;
+}
+.footertextright
+{
+	margin-left:52%;
+	text-align:right;
+	color:white;
+	font-size:12px;
+	font-family: "Comic Sans MS", cursive;
+}
+
