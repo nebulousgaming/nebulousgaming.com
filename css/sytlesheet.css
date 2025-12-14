@@ -209,6 +209,7 @@ visibility:hidden;
 	background: url(../img/details_.png) no-repeat;
 	position:absolute;
 	border-radius:30px;
+	text-align: center;
 	margin: 300px 0 0 575px;
 }
 #details
