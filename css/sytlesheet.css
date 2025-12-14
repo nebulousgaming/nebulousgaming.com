@@ -23,7 +23,7 @@ a:hover
 
 .main
 {
-	width: 1500px;
+	width: 100%;
 	min-height:100%;
 	margin: auto;
 
@@ -63,8 +63,8 @@ a:hover
 /* Call of Duty 4 */
 .cod4
 {
-	width: 750px;
-	min-height:400px;
+	width: 50%;
+	min-height:50%;
 	background: url(../img/cod.jpg) no-repeat;
 	position:absolute;
 	float:left;
