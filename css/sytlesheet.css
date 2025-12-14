@@ -63,8 +63,8 @@ a:hover
 /* Call of Duty 4 */
 .cod4
 {
-	width: 1000px;
-	min-height:750px;
+	width: 750px;
+	min-height:400px;
 	background: url(../img/cod.jpg) no-repeat;
 	position:absolute;
 	float:left;
@@ -100,8 +100,8 @@ visibility:hidden;
 /* Counter Strike: Global Offensive */
 .csgo
 {
-	width: 1000px;
-	min-height:750px;
+	width: 750px;
+	min-height:400px;
 	background: url(../img/csgo.jpg) no-repeat;
 	float:left;
 	margin-left:750px;
@@ -135,8 +135,8 @@ visibility:hidden;
 /* Don't Starve Together */
 .dst
 {
-	width: 1000px;
-	min-height:750px;
+	width: 750px;
+	min-height:400px;
 	background: url(../img/dst.png) no-repeat;
 	float:left;
 }
@@ -168,8 +168,8 @@ visibility:hidden;
 /* Minecraft */
 .mc
 {
-	width: 1000px;
-	min-height:750px;
+	width: 750px;
+	min-height:400px;
 	background: url(../img/mc.jpg) no-repeat;
 	float:left;
 }
