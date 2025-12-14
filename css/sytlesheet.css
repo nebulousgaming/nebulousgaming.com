@@ -222,7 +222,7 @@ visibility:hidden;
 .sociallinks
 {
 
-	position:absolute;
+	position:relative;
 	border-radius: 50%;
 }
 .zoom
