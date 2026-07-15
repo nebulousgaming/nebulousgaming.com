@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet2.css">
+    <title>Gateway Portal | Nebulous Gaming</title>
+
+</head>
+<body>
+
+    <div class="main">
+    
+        <header class="header">
+            <div class="logo-container">
+                <a href="../index.html"><img src="../img/logo.png" alt="Nebulous Gaming Logo"></a>
+            </div>
+            <ul class="nav-tabs">
+                <li><a href="../index.html" class="nav-tab-link">Home</a></li>
+                <li><a href="servers.html" class="nav-tab-link">Game Servers</a></li>
+                <li><a href="about.html" class="nav-tab-link">Infrastructure</a></li>
+                <li><a href="contact.html" class="nav-tab-link active">Support</a></li>
+                <li><a href="policies.html" class="nav-tab-link">Policies</a></li>
+                <li><a href="auth.html" class="nav-tab-link login-btn-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; margin-right: 6px; vertical-align: middle;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Login</a></li>
+            </ul>
+        </header>
+
+        <h1 class="subpage-title">Support & Whitelist Access</h1>
+        <p class="subpage-subtitle">Submit server access whitelists, reporting queries, or general infrastructure support tickets.</p>
+        
+        <div class="custom-divider">
+            <div class="divider-line divider-1"></div>
+            <div class="divider-line divider-2"></div>
+            <div class="divider-line divider-3"></div>
+            <div class="divider-line divider-4"></div>
+        </div>
+
+        <div class="rules" style="max-width: 600px; margin: 2rem auto;">
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name / Alias</label>
+                    <input type="text" id="fullName" name="name" class="form-input" placeholder="e.g. John Doe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="e.g. john@example.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gameNode">Target Server Node</label>
+                    <select id="gameNode" name="server" class="form-input form-select" required>
+                        <option value="" disabled selected>Select server node...</option>
+                        <option value="cod4">Call of Duty 4 (TDM / FFA)</option>
+                        <option value="csgo">Counter-Strike: Global Offensive</option>
+                        <option value="dst">Don't Starve Together</option>
+                        <option value="mc">Minecraft (Community Whitelisted)</option>
+                        <option value="other">General SaaS / Cloud Infrastructure Query</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="inquiryType">Ticket Category</label>
+                    <select id="inquiryType" name="category" class="form-input form-select" required>
+                        <option value="" disabled selected>Select ticket category...</option>
+                        <option value="whitelist">Server Whitelist Request</option>
+                        <option value="support">Technical Support Ticket</option>
+                        <option value="abuse">Report Player / Abuse Filing</option>
+                        <option value="purchase">Purchase Server / Custom Hosting Plan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Ticket Details / Message</label>
+                    <textarea id="message" name="message" class="form-input" rows="5" placeholder="Specify your request, usernames, or details..." required style="resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Submit Ticket</button>
+
+            </form>
+        </div>
+
+        <div class="custom-divider">
+            <div class="divider-line divider-4"></div>
+            <div class="divider-line divider-3"></div>
+            <div class="divider-line divider-2"></div>
+            <div class="divider-line divider-1"></div>
+        </div>
+        
+        <footer class="footer">
+            <div class="footertextleft">
+                &copy; 2019-2026 NEBULOUS GAMING, INC. Powered by the Nebulous Cloud Infrastructure.<br>
+                All graphics and trademarks are the property of their respective owners.
+                <span class="footertextright">| www.nebulousgaming.com | @2019-<u>2026</u></span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Success Modal Overlay -->
+    <div id="successOverlay" class="success-overlay">
+        <div class="success-card">
+            <div class="success-icon">&check;</div>
+            <h2 style="margin-bottom: 0.8rem; color: #fff;">Ticket Submitted Successfully</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
+                Your gateway ticket has been logged in our queue. We will reach out to you via your email address shortly.
+            </p>
+            <button onclick="closeSuccessModal()" class="btn-submit" style="margin-top: 0; max-width: 150px;">Close</button>
+        </div>
+    </div>
+
+    <!-- Error Modal Overlay -->
+    <div id="errorOverlay" class="success-overlay">
+        <div class="success-card" style="box-shadow: 0 15px 35px rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.2);">
+            <div class="success-icon" style="background: rgba(239, 68, 68, 0.1); border-color: #ef4444; color: #ef4444; font-size: 2.2rem; line-height: 52px;">&times;</div>
+            <h2 style="margin-bottom: 0.8rem; color: #fff;">Submission Failed</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
+                We couldn't process your ticket automatically. Please try again or email us directly at <strong>info@nebulousgaming.com</strong>.
+            </p>
+            <button onclick="closeErrorModal()" class="btn-submit" style="margin-top: 0; max-width: 150px; background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const server = document.getElementById('gameNode').value;
+            const category = document.getElementById('inquiryType').value;
+            const message = document.getElementById('message').value;
+            
+            // Build pre-formatted email fields
+            const subject = encodeURIComponent(`Support Ticket [${category.toUpperCase()}] - ${server.toUpperCase()}`);
+            const body = encodeURIComponent(
+                `Full Name / Alias: ${name}\n` +
+                `Email Address: ${email}\n` +
+                `Target Server Node: ${server}\n` +
+                `Ticket Category: ${category}\n\n` +
+                `Details / Message:\n${message}`
+            );
+            
+            // Open local mail client pre-filled
+            window.location.href = `mailto:info@nebulousgaming.com?subject=${subject}&body=${body}`;
+            
+            // Show page success overlay popup
+            const overlay = document.getElementById('successOverlay');
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 10);
+            
+            document.getElementById('contactForm').reset();
+        }
+
+        function closeSuccessModal() {
+            const overlay = document.getElementById('successOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300);
+        }
+
+        function closeErrorModal() {
+            const overlay = document.getElementById('errorOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet2.css">
+    <title>Servers Dashboard | Nebulous Gaming</title>
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .server-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .server-card:hover {
+            border-color: var(--border-card-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15);
+        }
+
+        .server-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .server-badge-container img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .server-badge-container h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .status-pill.whitelisted {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: currentColor;
+            display: inline-block;
+        }
+
+        .server-btn {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .server-btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+        }
+
+        .server-btn-primary:hover {
+            background: #818cf8;
+            text-decoration: none;
+        }
+
+        .server-btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .server-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+    
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <a href="../index.html"><img src="../img/logo.png" alt="Nebulous Gaming Logo"></a>
+            </div>
+            <ul class="nav-tabs">
+                <li><a href="../index.html" class="nav-tab-link">Home</a></li>
+                <li><a href="servers.html" class="nav-tab-link active">Game Servers</a></li>
+                <li><a href="about.html" class="nav-tab-link">Infrastructure</a></li>
+                <li><a href="contact.html" class="nav-tab-link">Support</a></li>
+                <li><a href="policies.html" class="nav-tab-link">Policies</a></li>
+                <li><a href="auth.html" class="nav-tab-link login-btn-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; margin-right: 6px; vertical-align: middle;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Login</a></li>
+            </ul>
+        </header>
+
+        <h1 class="subpage-title">Game Server Deployments</h1>
+        <p class="subpage-subtitle">Real-time status indicators and parameters for all active multiplayer nodes.</p>
+        
+        <div class="custom-divider">
+            <div class="divider-line divider-1"></div>
+            <div class="divider-line divider-2"></div>
+            <div class="divider-line divider-3"></div>
+            <div class="divider-line divider-4"></div>
+        </div>
+
+        <!-- Servers Grid -->
+        <div class="dashboard-grid">
+            
+            <!-- Call of Duty 4 Card -->
+            <div class="server-card">
+                <div class="server-badge-container">
+                    <img src="../img/codlogo.png" alt="CoD 4">
+                    <h2>Call of Duty 4</h2>
+                </div>
+                <div class="status-pill">
+                    <span class="status-dot"></span> Online
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">Auto-scaled TDM & FFA servers running on containerized cloud compute instances.</p>
+                <div class="ping-tester">
+                    <button onclick="runPingTest(this)" class="ping-btn">⚡ Test Connection</button>
+                    <span class="ping-result">-- ms</span>
+                </div>
+                <div style="display: flex; flex-direction: column; width: 100%; gap: 0.6rem; margin-top: auto;">
+                    <a href="cod_servers.html" class="server-btn server-btn-primary">Connect & Live Status</a>
+                    <a href="cod_rules.html" class="server-btn server-btn-secondary">View Rules</a>
+                </div>
+            </div>
+
+            <!-- CS:GO Card -->
+            <div class="server-card">
+                <div class="server-badge-container">
+                    <img src="../img/csgologo.png" alt="CS:GO">
+                    <h2>CS:GO</h2>
+                </div>
+                <div class="status-pill">
+                    <span class="status-dot"></span> Online
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">High-tick rate competitive matches hosted on premium cloud routing zones.</p>
+                <div class="ping-tester">
+                    <button onclick="runPingTest(this)" class="ping-btn">⚡ Test Connection</button>
+                    <span class="ping-result">-- ms</span>
+                </div>
+                <div style="display: flex; flex-direction: column; width: 100%; gap: 0.6rem; margin-top: auto;">
+                    <a href="csgo_server.html" class="server-btn server-btn-primary">Connect & Live Status</a>
+                    <a href="csgo_rules.html" class="server-btn server-btn-secondary">View Rules</a>
+                </div>
+            </div>
+
+            <!-- Don't Starve Card -->
+            <div class="server-card">
+                <div class="server-badge-container">
+                    <img src="../img/dstlogo.png" alt="DST">
+                    <h2>Don't Starve Together</h2>
+                </div>
+                <div class="status-pill">
+                    <span class="status-dot"></span> Online
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">Persistent cooperative survival sandbox instance with high-RAM backups.</p>
+                <div class="ping-tester">
+                    <button onclick="runPingTest(this)" class="ping-btn">⚡ Test Connection</button>
+                    <span class="ping-result">-- ms</span>
+                </div>
+                <div style="display: flex; flex-direction: column; width: 100%; gap: 0.6rem; margin-top: auto;">
+                    <a href="dst_server.html" class="server-btn server-btn-primary">IP & Server Details</a>
+                </div>
+            </div>
+
+            <!-- Minecraft Card -->
+            <div class="server-card">
+                <div class="server-badge-container">
+                    <img src="../img/mclogo.png" alt="Minecraft">
+                    <h2>Minecraft</h2>
+                </div>
+                <div class="status-pill whitelisted">
+                    <span class="status-dot"></span> Whitelisted
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 300;">Community vanilla-survival server node. Whitelist access is required.</p>
+                <div class="ping-tester">
+                    <button onclick="runPingTest(this)" class="ping-btn">⚡ Test Connection</button>
+                    <span class="ping-result">-- ms</span>
+                </div>
+                <div style="display: flex; flex-direction: column; width: 100%; gap: 0.6rem; margin-top: auto;">
+                    <a href="mc_server.html" class="server-btn server-btn-primary">Apply & View Rules</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Terminal Console Section -->
+        <h2 class="subpage-title" style="margin-top: 5rem; font-size: 1.5rem;">Live Node Console Simulator</h2>
+        <p class="subpage-subtitle" style="margin-bottom: 1.8rem;">Access the virtual cloud command terminal for node telemetry control.</p>
+
+        <div class="terminal-container">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-title">nebulous@mumbai-node-01: ~</div>
+            </div>
+            <div class="terminal-body" id="terminalBody">
+                <div class="terminal-line">Welcome to Nebulous Gaming Virtual Cloud Node CLI.</div>
+                <div class="terminal-line">Type <span style="color: var(--primary);">help</span> to view available diagnostics commands.</div>
+                <div class="terminal-line">&nbsp;</div>
+            </div>
+            <div class="terminal-input-row">
+                <span class="terminal-prompt">nebulous@mumbai-node-01:~$</span>
+                <input type="text" id="terminalInput" autocomplete="off" placeholder="Type a command...">
+            </div>
+        </div>
+
+        <div class="custom-divider">
+            <div class="divider-line divider-4"></div>
+            <div class="divider-line divider-3"></div>
+            <div class="divider-line divider-2"></div>
+            <div class="divider-line divider-1"></div>
+        </div>
+        
+        <footer class="footer">
+            <div class="footertextleft">
+                &copy; 2019-2026 NEBULOUS GAMING, INC. Powered by the Nebulous Cloud Infrastructure.<br>
+                All graphics and trademarks are the property of their respective owners.
+                <span class="footertextright">| <a href="contact.html" style="color: var(--primary);">Support Portal</a> | www.nebulousgaming.com | @2019-<u>2026</u></span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        function runPingTest(button) {
+            const card = button.closest('.server-card');
+            const resultSpan = card.querySelector('.ping-result');
+            const originalText = button.innerHTML;
+
+            button.disabled = true;
+            button.innerHTML = '⚡ Testing...';
+            resultSpan.textContent = 'connecting...';
+            resultSpan.className = 'ping-result loading';
+
+            // Simulated dynamic cloud roundtrip pings (low latency)
+            setTimeout(() => {
+                let basePing = 12;
+                if (card.querySelector('h2').textContent.includes("Don't Starve")) {
+                    basePing = 22;
+                } else if (card.querySelector('h2').textContent.includes("Minecraft")) {
+                    basePing = 18;
+                }
+                
+                const randomPing = basePing + Math.floor(Math.random() * 6);
+                
+                resultSpan.textContent = `${randomPing} ms`;
+                resultSpan.className = 'ping-result success';
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }, 600 + Math.random() * 400);
+        }
+
+        // Terminal Simulator Commands Execution
+        const terminalInput = document.getElementById('terminalInput');
+        const terminalBody = document.getElementById('terminalBody');
+
+        if (terminalInput) {
+            terminalInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const command = this.value.trim();
+                    if (command) {
+                        handleTerminalCommand(command);
+                    }
+                    this.value = '';
+                }
+            });
+        }
+
+        function writeTerminalLine(text, color = '#34d399') {
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.style.color = color;
+            line.innerHTML = text;
+            terminalBody.appendChild(line);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        function handleTerminalCommand(cmd) {
+            // Echo input
+            writeTerminalLine(`nebulous@mumbai-node-01:~$ ${cmd}`, '#fff');
+            
+            const lowerCmd = cmd.toLowerCase();
+
+            switch (lowerCmd) {
+                case 'help':
+                    writeTerminalLine('Available diagnostics commands:');
+                    writeTerminalLine(' - <span style="color: #6366f1;">status</span>  : Prints cloud engine health parameters.');
+                    writeTerminalLine(' - <span style="color: #6366f1;">ping</span>    : Sends active latency test signals.');
+                    writeTerminalLine(' - <span style="color: #6366f1;">restart</span> : Executes virtual container restart routine.');
+                    writeTerminalLine(' - <span style="color: #6366f1;">clear</span>   : Clears screen buffers.');
+                    break;
+                case 'status':
+                    writeTerminalLine('Fetching telemetry logs from Mumbai cloud edge...');
+                    setTimeout(() => {
+                        writeTerminalLine('Node ID: NEB-MUM-NODE-01 [STATUS: SECURE]', '#10b981');
+                        writeTerminalLine('Active Containers: 4 / 4 Nodes active.');
+                        writeTerminalLine('CPU Load: 24.8% [Average]');
+                        writeTerminalLine('RAM Consumption: 14.2 GB / 32 GB allocated.');
+                        writeTerminalLine('Network Bandwidth: 1.2 Gbps [Inbound] / 1.6 Gbps [Outbound]');
+                        writeTerminalLine('Uptime: 243 hrs 12 mins [99.99% average]');
+                    }, 400);
+                    break;
+                case 'ping':
+                    writeTerminalLine('Sending ping requests to nodes...');
+                    setTimeout(() => {
+                        writeTerminalLine('Reply from 15.206.242.185: time=14ms bytes=32 TTL=56');
+                        writeTerminalLine('Reply from 15.206.34.76: time=12ms bytes=32 TTL=56');
+                        writeTerminalLine('Reply from 13.234.74.105: time=22ms bytes=32 TTL=56');
+                        writeTerminalLine('Ping stats: 3 packets transmitted, 3 received, 0% packet loss.', '#10b981');
+                    }, 600);
+                    break;
+                case 'restart':
+                    writeTerminalLine('Executing container safe restart sequence...', '#f59e0b');
+                    terminalInput.disabled = true;
+                    setTimeout(() => {
+                        writeTerminalLine('Stopping active node environments... [OK]');
+                    }, 400);
+                    setTimeout(() => {
+                        writeTerminalLine('Re-allocating container namespaces... [OK]');
+                    }, 900);
+                    setTimeout(() => {
+                        writeTerminalLine('Mounting persistent cloud backups... [OK]');
+                    }, 1400);
+                    setTimeout(() => {
+                        writeTerminalLine('Container rebooted successfully. Mumbai node online.', '#10b981');
+                        terminalInput.disabled = false;
+                        terminalInput.focus();
+                    }, 1900);
+                    break;
+                case 'clear':
+                    terminalBody.innerHTML = '';
+                    break;
+                default:
+                    writeTerminalLine(`Command not found: ${cmd}. Type 'help' for available CLI diagnostics commands.`, '#ef4444');
+            }
+        }
+    </script>
+
+</body>
+</html>

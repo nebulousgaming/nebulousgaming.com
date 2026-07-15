@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/stylesheet2.css">
+    <title>Client Portal | Nebulous Gaming</title>
+</head>
+<body>
+
+    <div class="main">
+    
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <a href="../index.html"><img src="../img/logo.png" alt="Nebulous Gaming Logo"></a>
+            </div>
+            <ul class="nav-tabs">
+                <li><a href="../index.html" class="nav-tab-link">Home</a></li>
+                <li><a href="servers.html" class="nav-tab-link">Game Servers</a></li>
+                <li><a href="about.html" class="nav-tab-link">Infrastructure</a></li>
+                <li><a href="contact.html" class="nav-tab-link">Support</a></li>
+                <li><a href="policies.html" class="nav-tab-link">Policies</a></li>
+                <li><a href="auth.html" class="nav-tab-link login-btn-tab active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px; margin-right: 6px; vertical-align: middle;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Login</a></li>
+            </ul>
+        </header>
+
+        <div class="auth-container">
+            <div class="auth-box">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+                    <button class="auth-tab" onclick="switchAuthTab('register')">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm" onsubmit="handleAuthSubmit(event, 'login')">
+                    <div class="form-group">
+                        <label for="loginEmail">Email Address</label>
+                        <input type="email" id="loginEmail" class="form-input" placeholder="e.g. john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; font-size: 0.85rem;">
+                        <label style="display: flex; align-items: center; gap: 0.4rem; color: var(--text-muted); cursor: pointer;">
+                            <input type="checkbox" style="accent-color: var(--primary);"> Remember me
+                        </label>
+                        <a href="#" style="color: var(--primary); text-decoration: none;">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-submit">Sign In to Dashboard</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" onsubmit="handleAuthSubmit(event, 'register')" style="display: none;">
+                    <div class="form-group">
+                        <label for="registerName">Full Name / Alias</label>
+                        <input type="text" id="registerName" class="form-input" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email Address</label>
+                        <input type="email" id="registerEmail" class="form-input" placeholder="e.g. john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerConfirm">Confirm Password</label>
+                        <input type="password" id="registerConfirm" class="form-input" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-submit">Create Account</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Success Modal Overlay -->
+        <div id="successOverlay" class="success-overlay">
+            <div class="success-card">
+                <div class="success-icon">&check;</div>
+                <h2 id="successTitle" style="margin-bottom: 0.8rem; color: #fff;">Signed In Successfully</h2>
+                <p id="successMessage" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6;">
+                    Welcome back! Redirecting to client node dashboard...
+                </p>
+                <button onclick="closeSuccessModal()" class="btn-submit" style="margin-top: 0; max-width: 150px;">Continue</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchAuthTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabs = document.querySelectorAll('.auth-tab');
+
+            if (tab === 'login') {
+                loginForm.style.display = 'block';
+                registerForm.style.display = 'none';
+                tabs[0].classList.add('active');
+                tabs[1].classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                registerForm.style.display = 'block';
+                tabs[0].classList.remove('active');
+                tabs[1].classList.add('active');
+            }
+        }
+
+        function handleAuthSubmit(e, action) {
+            e.preventDefault();
+            
+            const title = document.getElementById('successTitle');
+            const msg = document.getElementById('successMessage');
+            
+            if (action === 'login') {
+                title.textContent = 'Signed In Successfully';
+                msg.textContent = 'Welcome back! Redirecting to client node dashboard...';
+            } else {
+                // Check passwords match
+                const pass = document.getElementById('registerPassword').value;
+                const confirm = document.getElementById('registerConfirm').value;
+                if (pass !== confirm) {
+                    alert("Passwords do not match!");
+                    return;
+                }
+                title.textContent = 'Registration Complete';
+                msg.textContent = 'Your account has been configured. You can now access server node commands.';
+            }
+
+            const overlay = document.getElementById('successOverlay');
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.style.opacity = '1';
+            }, 10);
+        }
+
+        function closeSuccessModal() {
+            const overlay = document.getElementById('successOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                window.location.href = 'servers.html';
+            }, 300);
+        }
+    </script>
+
+</body>
+</html>
